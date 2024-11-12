@@ -220,6 +220,46 @@ public class CustomerTests {
         // Additional logging for successful order placement
         System.out.println("Order placed successfully with customer_id: " + customerId);
     }
+    @Test(priority = 6, dependsOnMethods = "testGetCustomerAddressByCustomerId")
+    public void testPlaceOrderAlternative() {
+        // Ensure IDs are valid
+        Assert.assertNotEquals(customerId, 0, "Customer ID should be valid.");
+        Assert.assertNotEquals(customerAddressId, 0, "Customer Address ID should be valid.");
+        Assert.assertNotEquals(warehouseId, 0, "Warehouse ID should be valid.");
+
+        // Set up the order information payload
+        OrderInfo orderInfo = new OrderInfo();
+        orderInfo.setCustomer_id(customerId);
+        orderInfo.setWarehouse_id(warehouseId);
+        orderInfo.setCustomer_address_id(customerAddressId); // Use customerAddressId fetched from the previous test
+        orderInfo.setUser_id(userId);
+
+        // Create a list for subscription orders and set order details
+        List<OrderInfo.SubscriptionOrder> subscriptionOrders = new ArrayList<OrderInfo.SubscriptionOrder>();
+        OrderInfo.SubscriptionOrder subscriptionOrder = new OrderInfo.SubscriptionOrder();
+
+        subscriptionOrder.setSku_id(1004);
+        subscriptionOrder.setStart_date("2024-11-07");
+        subscriptionOrder.setQuantity(10);
+        subscriptionOrder.setFrequency_id(2);
+        subscriptionOrder.setSlot_id(1);
+        subscriptionOrders.add(subscriptionOrder);
+
+        // Add subscription orders to orderInfo
+        orderInfo.setSubscriptions_orders(subscriptionOrders);
+
+        // Call the placeOrder endpoint
+        Response response = CustomerEndPoints.placeOrder(orderInfo);
+
+        // Log the response for debugging
+        System.out.println("Place Order Response: " + response.getBody().asString());
+
+        // Validate the response status code
+        Assert.assertEquals(response.getStatusCode(), 200, "Status code is not as expected");
+
+        // Additional logging for successful order placement
+        System.out.println("Order placed successfully with customer_id: " + customerId);
+    }
 
 }
 
