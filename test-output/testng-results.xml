@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-11-12T10:19:27 IST" name="Default suite" finished-at="2024-11-12T10:19:34 IST" duration-ms="7763">
+    <groups>
+    </groups>
+    <test started-at="2024-11-12T10:19:27 IST" name="Default test" finished-at="2024-11-12T10:19:34 IST" duration-ms="7763">
+      <class name="api.test.CustomerTests">
+        <test-method is-config="true" signature="setup()[pri:0, instance:api.test.CustomerTests@279fedbd]" started-at="2024-11-12T10:19:27 IST" name="setup" finished-at="2024-11-12T10:19:28 IST" duration-ms="1518" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="testCreateCustomer()[pri:1, instance:api.test.CustomerTests@279fedbd]" started-at="2024-11-12T10:19:28 IST" name="testCreateCustomer" finished-at="2024-11-12T10:19:33 IST" duration-ms="4281" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCreateCustomer -->
+        <test-method signature="testAddWalletHistory()[pri:2, instance:api.test.CustomerTests@279fedbd]" started-at="2024-11-12T10:19:33 IST" name="testAddWalletHistory" finished-at="2024-11-12T10:19:33 IST" depends-on-methods="api.test.CustomerTests.testCreateCustomer" duration-ms="348" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddWalletHistory -->
+        <test-method signature="testAddCustomerAddress()[pri:3, instance:api.test.CustomerTests@279fedbd]" started-at="2024-11-12T10:19:33 IST" name="testAddCustomerAddress" finished-at="2024-11-12T10:19:33 IST" depends-on-methods="api.test.CustomerTests.testCreateCustomer" duration-ms="544" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAddCustomerAddress -->
+        <test-method signature="testGetCustomerAddressByCustomerId()[pri:4, instance:api.test.CustomerTests@279fedbd]" started-at="2024-11-12T10:19:33 IST" name="testGetCustomerAddressByCustomerId" finished-at="2024-11-12T10:19:34 IST" duration-ms="504" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetCustomerAddressByCustomerId -->
+        <test-method signature="testPlaceOrder()[pri:5, instance:api.test.CustomerTests@279fedbd]" started-at="2024-11-12T10:19:34 IST" name="testPlaceOrder" finished-at="2024-11-12T10:19:34 IST" depends-on-methods="api.test.CustomerTests.testGetCustomerAddressByCustomerId" duration-ms="460" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPlaceOrder -->
+      </class> <!-- api.test.CustomerTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
