@@ -5,9 +5,10 @@
     <classes>
       <class name="api.test.CustomerTests">
         <methods>
+          <include name="testAddWalletHistory"/>
+          <include name="testAddCustomerAddress"/>
+          <include name="testCreateCustomer"/>
           <include name="setup"/>
-          <include name="testPlaceOrder"/>
-          <include name="testGetCustomerAddressByCustomerId"/>
         </methods>
       </class> <!-- api.test.CustomerTests -->
     </classes>

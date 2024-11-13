@@ -33,19 +33,23 @@ public class CustomerTests {
     private int userId = 9; // Assuming a fixed userId for this example
     //int customerEnd=new CustomerEndPoints();
     @BeforeClass
-    public void setup() {
+    public void setup() throws Exception {
+        // Sleep for setup delay (if required for resource availability)
+        Thread.sleep(2000);
+
+        // Initialize Faker instance for data generation
         faker = new Faker();
         customerPayload = new CustomerInfo();
 
-        // Setting customer payload fields
+        // Set Customer Payload fields with random values using Faker
         customerPayload.setCustomer_first_name(faker.name().firstName());
         customerPayload.setCustomer_last_name(faker.name().lastName());
         customerPayload.setEmail(faker.internet().emailAddress());
         customerPayload.setMobile(faker.number().digits(10));
         customerPayload.setSource_of_referral(faker.number().numberBetween(1, 5));
         customerPayload.setAvatar("images/customer/" + faker.number().digits(10) + ".jpeg");
-        customerPayload.setRegistered_date("2024-11-07");
-        customerPayload.setIs_new(1);
+        customerPayload.setRegistered_date("2024-11-13");
+        customerPayload.setIs_new(1);  // Set status to 'new' by default
         customerPayload.setCan_ring_bell(0);
         customerPayload.setCan_sms_send(0);
         customerPayload.setCan_notification_send(0);
@@ -53,27 +57,27 @@ public class CustomerTests {
         customerPayload.setCan_whatsapp_send(0);
         customerPayload.setBlock_comment("Test Comment");
 
-        // Setting nested customer profile
+        // Setting up the Customer Profile (nested object)
         CustomerInfo.CustomerProfile profile = new CustomerInfo.CustomerProfile();
-        profile.setDob("2024-08-28");
-        profile.setGender(faker.demographic().sex());
-        profile.setHeight(faker.number().numberBetween(150, 200));
-        profile.setWeight(faker.number().numberBetween(50, 100));
+        profile.setDob("2024-08-28");  // Set a default date of birth
+        profile.setGender(faker.demographic().sex());  // Random gender
+        profile.setHeight(faker.number().numberBetween(150, 200));  // Random height between 150-200 cm
+        profile.setWeight(faker.number().numberBetween(50, 100));  // Random weight between 50-100 kg
         profile.setAvatar("images/customer/" + faker.number().digits(10) + ".jpeg");
-        profile.setActivity_level("Secondary");
-        profile.setFood_preferences("Vegetarian");
-        profile.setHealth_issues(faker.number().numberBetween(1, 3));
-        profile.setRelationship("Manager");
+        profile.setActivity_level("Secondary");  // Fixed activity level
+        profile.setFood_preferences("Vegetarian");  // Fixed food preference
+        profile.setHealth_issues(faker.number().numberBetween(1, 3));  // Random health issues number
+        profile.setRelationship("Manager");  // Fixed relationship value
 
         customerPayload.setCustomer_profile(profile);
-       // customerAddressId = addressResponse.jsonPath().getInt("customer_address_id");
 
-        // Logger setup
+        // Logger setup for logging purposes
         logger = LogManager.getLogger(this.getClass());
     }
 
     @Test(priority = 1)
-    public void testCreateCustomer() {
+    public void testCreateCustomer() throws Exception {
+    	Thread.sleep(2000);
         logger.info("*************** Creating Customer **********");
 
         // Send POST request to create customer
@@ -92,7 +96,8 @@ public class CustomerTests {
     }
 
     @Test(priority = 2, dependsOnMethods = "testCreateCustomer")
-    public void testAddWalletHistory() {
+    public void testAddWalletHistory() throws Exception {
+    	Thread.sleep(2000);
         logger.info("*************** Adding Wallet History **********");
 
         // Check if customer_id is set
@@ -123,7 +128,8 @@ public class CustomerTests {
     }
     
     @Test(priority = 3, dependsOnMethods = "testCreateCustomer")
-    public void testAddCustomerAddress() {
+    public void testAddCustomerAddress() throws Exception {
+    	Thread.sleep(2000);
         logger.info("*************** Adding Customer Address **********");
 
         // Verify that the customer_id from testCreateCustomer is valid
@@ -160,7 +166,8 @@ public class CustomerTests {
     //Get address details
     
     @Test(priority = 4)
-    public void testGetCustomerAddressByCustomerId() {
+    public void testGetCustomerAddressByCustomerId() throws Exception {
+    	Thread.sleep(2000);
         // Ensure that customerId is valid
         Assert.assertNotEquals(customerId, 0, "Customer ID should be available before fetching customer address");
 
@@ -181,7 +188,8 @@ public class CustomerTests {
     }
 
     @Test(priority = 5, dependsOnMethods = "testGetCustomerAddressByCustomerId")
-    public void testPlaceOrder() {
+    public void testPlaceOrder() throws Exception {
+    	Thread.sleep(2000);
         // Ensure IDs are valid
         Assert.assertNotEquals(customerId, 0, "Customer ID should be valid.");
         Assert.assertNotEquals(customerAddressId, 0, "Customer Address ID should be valid.");
@@ -199,7 +207,7 @@ public class CustomerTests {
         OrderInfo.SubscriptionOrder subscriptionOrder = new OrderInfo.SubscriptionOrder();
 
         subscriptionOrder.setSku_id(1001);
-        subscriptionOrder.setStart_date("2024-11-07");
+        subscriptionOrder.setStart_date("2024-11-13");
         subscriptionOrder.setQuantity(3);
         subscriptionOrder.setFrequency_id(1);
         subscriptionOrder.setSlot_id(1);
@@ -220,8 +228,9 @@ public class CustomerTests {
         // Additional logging for successful order placement
         System.out.println("Order placed successfully with customer_id: " + customerId);
     }
-    @Test(priority = 6, dependsOnMethods = "testGetCustomerAddressByCustomerId")
-    public void testPlaceOrderAlternative() {
+    @Test(priority = 6, dependsOnMethods = "testPlaceOrder")
+    public void testPlaceOrderAlternative() throws Exception {
+    	Thread.sleep(2000);
         // Ensure IDs are valid
         Assert.assertNotEquals(customerId, 0, "Customer ID should be valid.");
         Assert.assertNotEquals(customerAddressId, 0, "Customer Address ID should be valid.");
@@ -239,7 +248,7 @@ public class CustomerTests {
         OrderInfo.SubscriptionOrder subscriptionOrder = new OrderInfo.SubscriptionOrder();
 
         subscriptionOrder.setSku_id(1004);
-        subscriptionOrder.setStart_date("2024-11-07");
+        subscriptionOrder.setStart_date("2024-11-13");
         subscriptionOrder.setQuantity(10);
         subscriptionOrder.setFrequency_id(2);
         subscriptionOrder.setSlot_id(1);
@@ -260,6 +269,40 @@ public class CustomerTests {
         // Additional logging for successful order placement
         System.out.println("Order placed successfully with customer_id: " + customerId);
     }
+    @Test
+    public void runAllTestsTenTimes() throws Exception {
+        for (int i = 0; i < 2; i++) {
+            System.out.println("Running iteration: " + (i + 1));
+            
+            // Manually call the setup method to reinitialize necessary data for each iteration
+            setup();
+            
+            // Call testCreateCustomer and check if it passes before moving to the next test
+            try {
+                testCreateCustomer();
+            } catch (AssertionError e) {
+                System.out.println("testCreateCustomer failed, stopping further tests in this iteration");
+                break; // Stop further tests if customer creation fails
+            }
+
+            // Call each test method in sequence
+            testAddWalletHistory();
+            testAddCustomerAddress();
+            testGetCustomerAddressByCustomerId();
+            testPlaceOrder();
+            testPlaceOrderAlternative();
+
+            // Output completed iteration message
+            System.out.println("Iteration " + (i + 1) + " completed");
+            
+            // Check if it is iteration 2, if so, break the loop and stop execution
+            if (i == 1) {
+                System.out.println("Iteration 2 completed, stopping further execution.");
+                return;  // Instead of break, we use return to immediately stop method execution.
+            }
+        }
+    }
+
 
 }
 

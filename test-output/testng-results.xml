@@ -1,37 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="7" passed="4" failed="1" skipped="2">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-12T16:05:26 IST" name="Default suite" finished-at="2024-11-12T16:05:31 IST" duration-ms="4995">
+  <suite started-at="2024-11-13T13:14:50 IST" name="Default suite" finished-at="2024-11-13T13:15:42 IST" duration-ms="52282">
     <groups>
     </groups>
-    <test started-at="2024-11-12T16:05:26 IST" name="Default test" finished-at="2024-11-12T16:05:31 IST" duration-ms="4995">
+    <test started-at="2024-11-13T13:14:50 IST" name="Default test" finished-at="2024-11-13T13:15:42 IST" duration-ms="52282">
       <class name="api.test.CustomerTests">
-        <test-method is-config="true" signature="setup()[pri:0, instance:api.test.CustomerTests@b3ca52e]" started-at="2024-11-12T16:05:26 IST" name="setup" finished-at="2024-11-12T16:05:27 IST" duration-ms="961" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:14:50 IST" name="setup" finished-at="2024-11-13T13:14:53 IST" duration-ms="3282" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="testCreateCustomer()[pri:1, instance:api.test.CustomerTests@b3ca52e]" started-at="2024-11-12T16:05:27 IST" name="testCreateCustomer" finished-at="2024-11-12T16:05:30 IST" duration-ms="3301" status="PASS">
+        <test-method signature="runAllTestsTenTimes()[pri:0, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:14:53 IST" name="runAllTestsTenTimes" finished-at="2024-11-13T13:15:31 IST" duration-ms="38031" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runAllTestsTenTimes -->
+        <test-method signature="testCreateCustomer()[pri:1, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:15:31 IST" name="testCreateCustomer" finished-at="2024-11-13T13:15:34 IST" duration-ms="2197" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Status code is not as expected expected [200] but found [400]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Status code is not as expected expected [200] but found [400]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:1419)
+at org.testng.Assert.assertEquals(Assert.java:1383)
+at api.test.CustomerTests.testCreateCustomer(CustomerTests.java:88)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCreateCustomer -->
-        <test-method signature="testAddWalletHistory()[pri:2, instance:api.test.CustomerTests@b3ca52e]" started-at="2024-11-12T16:05:30 IST" name="testAddWalletHistory" finished-at="2024-11-12T16:05:30 IST" depends-on-methods="api.test.CustomerTests.testCreateCustomer" duration-ms="109" status="PASS">
+        <test-method signature="testAddWalletHistory()[pri:2, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:15:34 IST" name="testAddWalletHistory" finished-at="2024-11-13T13:15:34 IST" depends-on-methods="api.test.CustomerTests.testCreateCustomer" duration-ms="1" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method api.test.CustomerTests.testAddWalletHistory() on instance api.test.CustomerTests@2925bf5b depends on not successfully finished methods 
+[api.test.CustomerTests.testCreateCustomer() on instance api.test.CustomerTests@2925bf5b]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method api.test.CustomerTests.testAddWalletHistory() on instance api.test.CustomerTests@2925bf5b depends on not successfully finished methods 
+[api.test.CustomerTests.testCreateCustomer() on instance api.test.CustomerTests@2925bf5b]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:156)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddWalletHistory -->
-        <test-method signature="testAddCustomerAddress()[pri:3, instance:api.test.CustomerTests@b3ca52e]" started-at="2024-11-12T16:05:30 IST" name="testAddCustomerAddress" finished-at="2024-11-12T16:05:30 IST" depends-on-methods="api.test.CustomerTests.testCreateCustomer" duration-ms="86" status="PASS">
+        <test-method signature="testAddCustomerAddress()[pri:3, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:15:34 IST" name="testAddCustomerAddress" finished-at="2024-11-13T13:15:34 IST" depends-on-methods="api.test.CustomerTests.testCreateCustomer" duration-ms="1" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method api.test.CustomerTests.testAddCustomerAddress() on instance api.test.CustomerTests@2925bf5b depends on not successfully finished methods 
+[api.test.CustomerTests.testCreateCustomer() on instance api.test.CustomerTests@2925bf5b]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method api.test.CustomerTests.testAddCustomerAddress() on instance api.test.CustomerTests@2925bf5b depends on not successfully finished methods 
+[api.test.CustomerTests.testCreateCustomer() on instance api.test.CustomerTests@2925bf5b]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:156)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddCustomerAddress -->
-        <test-method signature="testGetCustomerAddressByCustomerId()[pri:4, instance:api.test.CustomerTests@b3ca52e]" started-at="2024-11-12T16:05:30 IST" name="testGetCustomerAddressByCustomerId" finished-at="2024-11-12T16:05:31 IST" duration-ms="219" status="PASS">
+        <test-method signature="testGetCustomerAddressByCustomerId()[pri:4, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:15:34 IST" name="testGetCustomerAddressByCustomerId" finished-at="2024-11-13T13:15:37 IST" duration-ms="3089" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testGetCustomerAddressByCustomerId -->
-        <test-method signature="testPlaceOrder()[pri:5, instance:api.test.CustomerTests@b3ca52e]" started-at="2024-11-12T16:05:31 IST" name="testPlaceOrder" finished-at="2024-11-12T16:05:31 IST" depends-on-methods="api.test.CustomerTests.testGetCustomerAddressByCustomerId" duration-ms="124" status="PASS">
+        <test-method signature="testPlaceOrder()[pri:5, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:15:37 IST" name="testPlaceOrder" finished-at="2024-11-13T13:15:40 IST" depends-on-methods="api.test.CustomerTests.testGetCustomerAddressByCustomerId" duration-ms="3259" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPlaceOrder -->
-        <test-method signature="testPlaceOrderAlternative()[pri:6, instance:api.test.CustomerTests@b3ca52e]" started-at="2024-11-12T16:05:31 IST" name="testPlaceOrderAlternative" finished-at="2024-11-12T16:05:31 IST" depends-on-methods="api.test.CustomerTests.testGetCustomerAddressByCustomerId" duration-ms="114" status="PASS">
+        <test-method signature="testPlaceOrderAlternative()[pri:6, instance:api.test.CustomerTests@2925bf5b]" started-at="2024-11-13T13:15:40 IST" name="testPlaceOrderAlternative" finished-at="2024-11-13T13:15:42 IST" depends-on-methods="api.test.CustomerTests.testPlaceOrder" duration-ms="2296" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testPlaceOrderAlternative -->
